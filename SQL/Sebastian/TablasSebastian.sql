@@ -21,7 +21,7 @@ create table tbl_caso (
 	cas_fecha_creacion date not null,
 	cas_fecha_vencimiento date not null,
 	cas_fotografia_inicio varchar(100) not null,
-	cas_fotografia_fin varchar(100) not null,
+	cas_fotografia_fin varchar(100),
 	cas_prioridad varchar(10) not null,
 	tbltipodepavimento_pav_id  int not null,
 	tblentorno_ent_id int not null,
