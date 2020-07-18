@@ -23,11 +23,11 @@ create table tbl_caso (
 	cas_fotografia_inicio varchar(100) not null,
 	cas_fotografia_fin varchar(100),
 	cas_prioridad varchar(10) not null,
-	tbltipodepavimento_pav_id  int not null,
-	tblentorno_ent_id int not null,
-	tbltramo_tra_id int not null,
-	tblusuario_usu_id int not null,
-	tblestado_est_id int not null,
+	tipo_pavimento_id  int not null,
+	entorno_id int not null,
+	tramo_id int not null,
+	usuario_id int not null,
+	estado_id int not null,
 	primary key(cas_id)
 );
 
@@ -36,7 +36,7 @@ create table tbl_caso (
 create table tbl_tipo_de_pavimento(
 	pav_id serial,
 	pav_descripcion varchar(16) not null,
-	tblmetodologia_met_id int not null,
+	metodologia_id int not null,
 	primary key(pav_id)
 );
 
@@ -69,38 +69,38 @@ create table tbl_entorno(
 -- y el references en el cual se determina el nombre de la tabla de la que sale la foranea y entre() la llave primaria de dicha tabla
 -- visualizar los ejemplos que se hicieron con las tablas del proyecto X_X
 
--- comando aplicado en el postgresql
+
 alter table tbl_tipo_de_pavimento
 add constraint FK_tbl_tipodepavimento_tblmetodologia_met_id
-foreign key (tblmetodologia_met_id)
+foreign key (metodologia_id)
 references tbl_metodologia(met_id);
 
--- comando aplicado en el postgresql
+
 alter table tbl_caso 
 add constraint FK_tbl_caso_tbltipodepavimento_pav_id
-foreign key (tbltipodepavimento_pav_id) 
+foreign key (tipo_pavimento_id) 
 references tbl_tipo_de_pavimento(pav_id);
 
--- comando aplicado en el postgresql
+
 alter table tbl_caso
 add constraint FK_tbl_caso_tblentorno_ent_id
-foreign key (tblentorno_ent_id) 
+foreign key (entorno_id) 
 references tbl_entorno(ent_id);
 
---La tabla tramo no existe en este punto temporal
+
 alter table tbl_caso 
 add constraint FK_tbl_caso_tbltramo_tra_id
-foreign key (tbltramo_tra_id) 
+foreign key (tramo_id) 
 references tbl_tramo(tra_id);
 
---La tabla usuario no existe en este punto temporal
+
 alter table tbl_caso 
 add FK_tbl_caso_tblusuario_usu_id
-foreign key (tblusuario_usu_id) 
+foreign key (usuario_id) 
 references tbl_usuario(usu_id);
 
---La tabla estado no existe en este punto temporal
+
 alter table tbl_caso 
 add FK_tbl_caso_tblestado_est_id
-foreign key (tblestado_est_id) 
+foreign key (estado_id) 
 references tbl_estado(est_id);
