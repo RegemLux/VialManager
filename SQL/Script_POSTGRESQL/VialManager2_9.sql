@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.2.9
 -- Dumped by pg_dump version 9.2.9
--- Started on 2020-07-19 14:57:54
+-- Started on 2020-07-20 16:19:58
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -13,7 +13,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 189 (class 3079 OID 11727)
+-- TOC entry 197 (class 3079 OID 11727)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -21,8 +21,8 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2036 (class 0 OID 0)
--- Dependencies: 189
+-- TOC entry 2080 (class 0 OID 0)
+-- Dependencies: 197
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -66,7 +66,7 @@ CREATE SEQUENCE tbl_calzada_cal_codigo_seq
 ALTER TABLE public.tbl_calzada_cal_codigo_seq OWNER TO postgres;
 
 --
--- TOC entry 2037 (class 0 OID 0)
+-- TOC entry 2081 (class 0 OID 0)
 -- Dependencies: 169
 -- Name: tbl_calzada_cal_codigo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -113,7 +113,7 @@ CREATE SEQUENCE tbl_caso_cas_id_seq
 ALTER TABLE public.tbl_caso_cas_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2038 (class 0 OID 0)
+-- TOC entry 2082 (class 0 OID 0)
 -- Dependencies: 171
 -- Name: tbl_caso_cas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -151,7 +151,7 @@ CREATE SEQUENCE tbl_caso_deterioro_cas_det_id_seq
 ALTER TABLE public.tbl_caso_deterioro_cas_det_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2039 (class 0 OID 0)
+-- TOC entry 2083 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: tbl_caso_deterioro_cas_det_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -188,7 +188,7 @@ CREATE SEQUENCE tbl_comuna_com_id_seq
 ALTER TABLE public.tbl_comuna_com_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2040 (class 0 OID 0)
+-- TOC entry 2084 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: tbl_comuna_com_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -226,7 +226,7 @@ CREATE SEQUENCE tbl_deterioro_det_codigo_seq
 ALTER TABLE public.tbl_deterioro_det_codigo_seq OWNER TO postgres;
 
 --
--- TOC entry 2041 (class 0 OID 0)
+-- TOC entry 2085 (class 0 OID 0)
 -- Dependencies: 173
 -- Name: tbl_deterioro_det_codigo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -263,7 +263,7 @@ CREATE SEQUENCE tbl_entorno_ent_id_seq
 ALTER TABLE public.tbl_entorno_ent_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2042 (class 0 OID 0)
+-- TOC entry 2086 (class 0 OID 0)
 -- Dependencies: 175
 -- Name: tbl_entorno_ent_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -313,12 +313,90 @@ CREATE SEQUENCE tbl_metodologia_met_id_seq
 ALTER TABLE public.tbl_metodologia_met_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2043 (class 0 OID 0)
+-- TOC entry 2087 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: tbl_metodologia_met_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE tbl_metodologia_met_id_seq OWNED BY tbl_metodologia.met_id;
+
+
+--
+-- TOC entry 194 (class 1259 OID 16671)
+-- Name: tbl_orden_mantenimiento; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_orden_mantenimiento (
+    ord_id integer NOT NULL,
+    ord_fecha_creacion date NOT NULL,
+    ord_fecha_vencimiento date NOT NULL,
+    usuario_id integer NOT NULL,
+    estado_id integer NOT NULL,
+    caso_id integer NOT NULL
+);
+
+
+ALTER TABLE public.tbl_orden_mantenimiento OWNER TO postgres;
+
+--
+-- TOC entry 193 (class 1259 OID 16669)
+-- Name: tbl_orden_mantenimiento_ord_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tbl_orden_mantenimiento_ord_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbl_orden_mantenimiento_ord_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2088 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: tbl_orden_mantenimiento_ord_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tbl_orden_mantenimiento_ord_id_seq OWNED BY tbl_orden_mantenimiento.ord_id;
+
+
+--
+-- TOC entry 190 (class 1259 OID 16655)
+-- Name: tbl_rol; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_rol (
+    rol_id integer NOT NULL,
+    rol_nombre character varying(20) NOT NULL
+);
+
+
+ALTER TABLE public.tbl_rol OWNER TO postgres;
+
+--
+-- TOC entry 189 (class 1259 OID 16653)
+-- Name: tbl_rol_rol_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tbl_rol_rol_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbl_rol_rol_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2089 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: tbl_rol_rol_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tbl_rol_rol_id_seq OWNED BY tbl_rol.rol_id;
 
 
 --
@@ -350,7 +428,7 @@ CREATE SEQUENCE tbl_tipo_de_calzada_tipc_id_seq
 ALTER TABLE public.tbl_tipo_de_calzada_tipc_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2044 (class 0 OID 0)
+-- TOC entry 2090 (class 0 OID 0)
 -- Dependencies: 179
 -- Name: tbl_tipo_de_calzada_tipc_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -388,12 +466,49 @@ CREATE SEQUENCE tbl_tipo_de_pavimento_pav_id_seq
 ALTER TABLE public.tbl_tipo_de_pavimento_pav_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2045 (class 0 OID 0)
+-- TOC entry 2091 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: tbl_tipo_de_pavimento_pav_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE tbl_tipo_de_pavimento_pav_id_seq OWNED BY tbl_tipo_de_pavimento.pav_id;
+
+
+--
+-- TOC entry 196 (class 1259 OID 16679)
+-- Name: tbl_tipo_documento; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_tipo_documento (
+    tip_id integer NOT NULL,
+    tip_descripcion character varying(45) NOT NULL
+);
+
+
+ALTER TABLE public.tbl_tipo_documento OWNER TO postgres;
+
+--
+-- TOC entry 195 (class 1259 OID 16677)
+-- Name: tbl_tipo_documento_tip_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tbl_tipo_documento_tip_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbl_tipo_documento_tip_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2092 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: tbl_tipo_documento_tip_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tbl_tipo_documento_tip_id_seq OWNED BY tbl_tipo_documento.tip_id;
 
 
 --
@@ -436,7 +551,7 @@ CREATE SEQUENCE tbl_tramo_tra_id_seq
 ALTER TABLE public.tbl_tramo_tra_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2046 (class 0 OID 0)
+-- TOC entry 2093 (class 0 OID 0)
 -- Dependencies: 182
 -- Name: tbl_tramo_tra_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -445,7 +560,54 @@ ALTER SEQUENCE tbl_tramo_tra_id_seq OWNED BY tbl_tramo.tra_id;
 
 
 --
--- TOC entry 1868 (class 2604 OID 16602)
+-- TOC entry 192 (class 1259 OID 16663)
+-- Name: tbl_usuario; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_usuario (
+    usu_id integer NOT NULL,
+    usu_num_identificacion character varying(15) NOT NULL,
+    usu_primer_nombre character varying(30) NOT NULL,
+    usu_segundo_nombre character varying(30) NOT NULL,
+    usu_primer_apellido character varying(30) NOT NULL,
+    usu_segundo_apellido character varying(30) NOT NULL,
+    "usu_contraseña" character varying(25) NOT NULL,
+    usu_telefono character varying(15) NOT NULL,
+    usu_correo character varying(35) NOT NULL,
+    rol_id integer NOT NULL,
+    estado_id integer NOT NULL,
+    tipo_documento_id integer NOT NULL
+);
+
+
+ALTER TABLE public.tbl_usuario OWNER TO postgres;
+
+--
+-- TOC entry 191 (class 1259 OID 16661)
+-- Name: tbl_usuario_usu_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tbl_usuario_usu_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbl_usuario_usu_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2094 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: tbl_usuario_usu_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tbl_usuario_usu_id_seq OWNED BY tbl_usuario.usu_id;
+
+
+--
+-- TOC entry 1892 (class 2604 OID 16602)
 -- Name: cal_codigo; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -453,7 +615,7 @@ ALTER TABLE ONLY tbl_calzada ALTER COLUMN cal_codigo SET DEFAULT nextval('tbl_ca
 
 
 --
--- TOC entry 1869 (class 2604 OID 16603)
+-- TOC entry 1893 (class 2604 OID 16603)
 -- Name: cas_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -461,7 +623,7 @@ ALTER TABLE ONLY tbl_caso ALTER COLUMN cas_id SET DEFAULT nextval('tbl_caso_cas_
 
 
 --
--- TOC entry 1877 (class 2604 OID 16649)
+-- TOC entry 1901 (class 2604 OID 16649)
 -- Name: cas_det_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -469,7 +631,7 @@ ALTER TABLE ONLY tbl_caso_deterioro ALTER COLUMN cas_det_id SET DEFAULT nextval(
 
 
 --
--- TOC entry 1876 (class 2604 OID 16641)
+-- TOC entry 1900 (class 2604 OID 16641)
 -- Name: com_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -477,7 +639,7 @@ ALTER TABLE ONLY tbl_comuna ALTER COLUMN com_id SET DEFAULT nextval('tbl_comuna_
 
 
 --
--- TOC entry 1870 (class 2604 OID 16604)
+-- TOC entry 1894 (class 2604 OID 16604)
 -- Name: det_codigo; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -485,7 +647,7 @@ ALTER TABLE ONLY tbl_deterioro ALTER COLUMN det_codigo SET DEFAULT nextval('tbl_
 
 
 --
--- TOC entry 1871 (class 2604 OID 16605)
+-- TOC entry 1895 (class 2604 OID 16605)
 -- Name: ent_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -493,7 +655,7 @@ ALTER TABLE ONLY tbl_entorno ALTER COLUMN ent_id SET DEFAULT nextval('tbl_entorn
 
 
 --
--- TOC entry 1872 (class 2604 OID 16606)
+-- TOC entry 1896 (class 2604 OID 16606)
 -- Name: met_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -501,7 +663,23 @@ ALTER TABLE ONLY tbl_metodologia ALTER COLUMN met_id SET DEFAULT nextval('tbl_me
 
 
 --
--- TOC entry 1873 (class 2604 OID 16607)
+-- TOC entry 1904 (class 2604 OID 16674)
+-- Name: ord_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tbl_orden_mantenimiento ALTER COLUMN ord_id SET DEFAULT nextval('tbl_orden_mantenimiento_ord_id_seq'::regclass);
+
+
+--
+-- TOC entry 1902 (class 2604 OID 16658)
+-- Name: rol_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tbl_rol ALTER COLUMN rol_id SET DEFAULT nextval('tbl_rol_rol_id_seq'::regclass);
+
+
+--
+-- TOC entry 1897 (class 2604 OID 16607)
 -- Name: tipc_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -509,7 +687,7 @@ ALTER TABLE ONLY tbl_tipo_de_calzada ALTER COLUMN tipc_id SET DEFAULT nextval('t
 
 
 --
--- TOC entry 1874 (class 2604 OID 16608)
+-- TOC entry 1898 (class 2604 OID 16608)
 -- Name: pav_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -517,7 +695,15 @@ ALTER TABLE ONLY tbl_tipo_de_pavimento ALTER COLUMN pav_id SET DEFAULT nextval('
 
 
 --
--- TOC entry 1875 (class 2604 OID 16628)
+-- TOC entry 1905 (class 2604 OID 16682)
+-- Name: tip_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tbl_tipo_documento ALTER COLUMN tip_id SET DEFAULT nextval('tbl_tipo_documento_tip_id_seq'::regclass);
+
+
+--
+-- TOC entry 1899 (class 2604 OID 16628)
 -- Name: tra_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -525,7 +711,15 @@ ALTER TABLE ONLY tbl_tramo ALTER COLUMN tra_id SET DEFAULT nextval('tbl_tramo_tr
 
 
 --
--- TOC entry 2027 (class 2613 OID 16566)
+-- TOC entry 1903 (class 2604 OID 16666)
+-- Name: usu_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tbl_usuario ALTER COLUMN usu_id SET DEFAULT nextval('tbl_usuario_usu_id_seq'::regclass);
+
+
+--
+-- TOC entry 2071 (class 2613 OID 16566)
 -- Name: 16566; Type: BLOB; Schema: -; Owner: postgres
 --
 
@@ -535,7 +729,7 @@ SELECT pg_catalog.lo_create('16566');
 ALTER LARGE OBJECT 16566 OWNER TO postgres;
 
 --
--- TOC entry 2006 (class 0 OID 16567)
+-- TOC entry 2042 (class 0 OID 16567)
 -- Dependencies: 168
 -- Data for Name: tbl_calzada; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -545,7 +739,7 @@ COPY tbl_calzada (cal_codigo, cal_calzada, cal_orientacion_carril, tipo_calzada_
 
 
 --
--- TOC entry 2047 (class 0 OID 0)
+-- TOC entry 2095 (class 0 OID 0)
 -- Dependencies: 169
 -- Name: tbl_calzada_cal_codigo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -554,7 +748,7 @@ SELECT pg_catalog.setval('tbl_calzada_cal_codigo_seq', 1, false);
 
 
 --
--- TOC entry 2008 (class 0 OID 16572)
+-- TOC entry 2044 (class 0 OID 16572)
 -- Dependencies: 170
 -- Data for Name: tbl_caso; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -564,7 +758,7 @@ COPY tbl_caso (cas_id, cas_causa, cas_fecha_creacion, cas_fecha_vencimiento, cas
 
 
 --
--- TOC entry 2048 (class 0 OID 0)
+-- TOC entry 2096 (class 0 OID 0)
 -- Dependencies: 171
 -- Name: tbl_caso_cas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -573,7 +767,7 @@ SELECT pg_catalog.setval('tbl_caso_cas_id_seq', 1, false);
 
 
 --
--- TOC entry 2026 (class 0 OID 16646)
+-- TOC entry 2062 (class 0 OID 16646)
 -- Dependencies: 188
 -- Data for Name: tbl_caso_deterioro; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -583,7 +777,7 @@ COPY tbl_caso_deterioro (cas_det_id, deterioro_id, caso_id) FROM stdin;
 
 
 --
--- TOC entry 2049 (class 0 OID 0)
+-- TOC entry 2097 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: tbl_caso_deterioro_cas_det_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -592,7 +786,7 @@ SELECT pg_catalog.setval('tbl_caso_deterioro_cas_det_id_seq', 1, false);
 
 
 --
--- TOC entry 2024 (class 0 OID 16638)
+-- TOC entry 2060 (class 0 OID 16638)
 -- Dependencies: 186
 -- Data for Name: tbl_comuna; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -602,7 +796,7 @@ COPY tbl_comuna (com_id, com_descripcion) FROM stdin;
 
 
 --
--- TOC entry 2050 (class 0 OID 0)
+-- TOC entry 2098 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: tbl_comuna_com_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -611,7 +805,7 @@ SELECT pg_catalog.setval('tbl_comuna_com_id_seq', 1, false);
 
 
 --
--- TOC entry 2010 (class 0 OID 16577)
+-- TOC entry 2046 (class 0 OID 16577)
 -- Dependencies: 172
 -- Data for Name: tbl_deterioro; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -621,7 +815,7 @@ COPY tbl_deterioro (det_codigo, det_nombre, det_tipo_deterioro) FROM stdin;
 
 
 --
--- TOC entry 2051 (class 0 OID 0)
+-- TOC entry 2099 (class 0 OID 0)
 -- Dependencies: 173
 -- Name: tbl_deterioro_det_codigo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -630,7 +824,7 @@ SELECT pg_catalog.setval('tbl_deterioro_det_codigo_seq', 1, false);
 
 
 --
--- TOC entry 2012 (class 0 OID 16582)
+-- TOC entry 2048 (class 0 OID 16582)
 -- Dependencies: 174
 -- Data for Name: tbl_entorno; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -640,7 +834,7 @@ COPY tbl_entorno (ent_id, ent_descripcion) FROM stdin;
 
 
 --
--- TOC entry 2052 (class 0 OID 0)
+-- TOC entry 2100 (class 0 OID 0)
 -- Dependencies: 175
 -- Name: tbl_entorno_ent_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -649,7 +843,7 @@ SELECT pg_catalog.setval('tbl_entorno_ent_id_seq', 1, false);
 
 
 --
--- TOC entry 2022 (class 0 OID 16631)
+-- TOC entry 2058 (class 0 OID 16631)
 -- Dependencies: 184
 -- Data for Name: tbl_jeraraquia_vial; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -659,7 +853,7 @@ COPY tbl_jeraraquia_vial (jer_id, descripcion) FROM stdin;
 
 
 --
--- TOC entry 2014 (class 0 OID 16587)
+-- TOC entry 2050 (class 0 OID 16587)
 -- Dependencies: 176
 -- Data for Name: tbl_metodologia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -669,7 +863,7 @@ COPY tbl_metodologia (met_id, met_descripcion) FROM stdin;
 
 
 --
--- TOC entry 2053 (class 0 OID 0)
+-- TOC entry 2101 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: tbl_metodologia_met_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -678,7 +872,45 @@ SELECT pg_catalog.setval('tbl_metodologia_met_id_seq', 1, false);
 
 
 --
--- TOC entry 2016 (class 0 OID 16592)
+-- TOC entry 2068 (class 0 OID 16671)
+-- Dependencies: 194
+-- Data for Name: tbl_orden_mantenimiento; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_orden_mantenimiento (ord_id, ord_fecha_creacion, ord_fecha_vencimiento, usuario_id, estado_id, caso_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2102 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: tbl_orden_mantenimiento_ord_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tbl_orden_mantenimiento_ord_id_seq', 1, false);
+
+
+--
+-- TOC entry 2064 (class 0 OID 16655)
+-- Dependencies: 190
+-- Data for Name: tbl_rol; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_rol (rol_id, rol_nombre) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2103 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: tbl_rol_rol_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tbl_rol_rol_id_seq', 1, false);
+
+
+--
+-- TOC entry 2052 (class 0 OID 16592)
 -- Dependencies: 178
 -- Data for Name: tbl_tipo_de_calzada; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -688,7 +920,7 @@ COPY tbl_tipo_de_calzada (tipc_id, tipo_de_calzada_descripcion) FROM stdin;
 
 
 --
--- TOC entry 2054 (class 0 OID 0)
+-- TOC entry 2104 (class 0 OID 0)
 -- Dependencies: 179
 -- Name: tbl_tipo_de_calzada_tipc_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -697,7 +929,7 @@ SELECT pg_catalog.setval('tbl_tipo_de_calzada_tipc_id_seq', 1, false);
 
 
 --
--- TOC entry 2018 (class 0 OID 16597)
+-- TOC entry 2054 (class 0 OID 16597)
 -- Dependencies: 180
 -- Data for Name: tbl_tipo_de_pavimento; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -707,7 +939,7 @@ COPY tbl_tipo_de_pavimento (pav_id, pav_descripcion, metodologia_id) FROM stdin;
 
 
 --
--- TOC entry 2055 (class 0 OID 0)
+-- TOC entry 2105 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: tbl_tipo_de_pavimento_pav_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -716,7 +948,26 @@ SELECT pg_catalog.setval('tbl_tipo_de_pavimento_pav_id_seq', 1, false);
 
 
 --
--- TOC entry 2021 (class 0 OID 16625)
+-- TOC entry 2070 (class 0 OID 16679)
+-- Dependencies: 196
+-- Data for Name: tbl_tipo_documento; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_tipo_documento (tip_id, tip_descripcion) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2106 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: tbl_tipo_documento_tip_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tbl_tipo_documento_tip_id_seq', 1, false);
+
+
+--
+-- TOC entry 2057 (class 0 OID 16625)
 -- Dependencies: 183
 -- Data for Name: tbl_tramo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -726,7 +977,7 @@ COPY tbl_tramo (tra_id, tra_codigo, tra_fecha_creacion, tra_segmento, tra_nomenc
 
 
 --
--- TOC entry 2056 (class 0 OID 0)
+-- TOC entry 2107 (class 0 OID 0)
 -- Dependencies: 182
 -- Name: tbl_tramo_tra_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -735,7 +986,26 @@ SELECT pg_catalog.setval('tbl_tramo_tra_id_seq', 1, false);
 
 
 --
--- TOC entry 2028 (class 0 OID 0)
+-- TOC entry 2066 (class 0 OID 16663)
+-- Dependencies: 192
+-- Data for Name: tbl_usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_usuario (usu_id, usu_num_identificacion, usu_primer_nombre, usu_segundo_nombre, usu_primer_apellido, usu_segundo_apellido, "usu_contraseña", usu_telefono, usu_correo, rol_id, estado_id, tipo_documento_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2108 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: tbl_usuario_usu_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tbl_usuario_usu_id_seq', 1, false);
+
+
+--
+-- TOC entry 2072 (class 0 OID 0)
 -- Data for Name: BLOBS; Type: BLOBS; Schema: -; Owner: 
 --
 
@@ -752,7 +1022,7 @@ COMMIT;
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 1879 (class 2606 OID 16610)
+-- TOC entry 1907 (class 2606 OID 16610)
 -- Name: tbl_calzada_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -761,7 +1031,7 @@ ALTER TABLE ONLY tbl_calzada
 
 
 --
--- TOC entry 1899 (class 2606 OID 16651)
+-- TOC entry 1927 (class 2606 OID 16651)
 -- Name: tbl_caso_deterioro_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -770,7 +1040,7 @@ ALTER TABLE ONLY tbl_caso_deterioro
 
 
 --
--- TOC entry 1881 (class 2606 OID 16612)
+-- TOC entry 1909 (class 2606 OID 16612)
 -- Name: tbl_caso_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -779,7 +1049,7 @@ ALTER TABLE ONLY tbl_caso
 
 
 --
--- TOC entry 1897 (class 2606 OID 16643)
+-- TOC entry 1925 (class 2606 OID 16643)
 -- Name: tbl_comuna_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -788,7 +1058,7 @@ ALTER TABLE ONLY tbl_comuna
 
 
 --
--- TOC entry 1883 (class 2606 OID 16614)
+-- TOC entry 1911 (class 2606 OID 16614)
 -- Name: tbl_deterioro_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -797,7 +1067,7 @@ ALTER TABLE ONLY tbl_deterioro
 
 
 --
--- TOC entry 1885 (class 2606 OID 16616)
+-- TOC entry 1913 (class 2606 OID 16616)
 -- Name: tbl_entorno_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -806,7 +1076,7 @@ ALTER TABLE ONLY tbl_entorno
 
 
 --
--- TOC entry 1895 (class 2606 OID 16635)
+-- TOC entry 1923 (class 2606 OID 16635)
 -- Name: tbl_jeraraquia_vial_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -815,7 +1085,7 @@ ALTER TABLE ONLY tbl_jeraraquia_vial
 
 
 --
--- TOC entry 1887 (class 2606 OID 16618)
+-- TOC entry 1915 (class 2606 OID 16618)
 -- Name: tbl_metodologia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -824,7 +1094,25 @@ ALTER TABLE ONLY tbl_metodologia
 
 
 --
--- TOC entry 1889 (class 2606 OID 16620)
+-- TOC entry 1933 (class 2606 OID 16676)
+-- Name: tbl_orden_mantenimiento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tbl_orden_mantenimiento
+    ADD CONSTRAINT tbl_orden_mantenimiento_pkey PRIMARY KEY (ord_id);
+
+
+--
+-- TOC entry 1929 (class 2606 OID 16660)
+-- Name: tbl_rol_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tbl_rol
+    ADD CONSTRAINT tbl_rol_pkey PRIMARY KEY (rol_id);
+
+
+--
+-- TOC entry 1917 (class 2606 OID 16620)
 -- Name: tbl_tipo_de_calzada_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -833,7 +1121,7 @@ ALTER TABLE ONLY tbl_tipo_de_calzada
 
 
 --
--- TOC entry 1891 (class 2606 OID 16622)
+-- TOC entry 1919 (class 2606 OID 16622)
 -- Name: tbl_tipo_de_pavimento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -842,7 +1130,16 @@ ALTER TABLE ONLY tbl_tipo_de_pavimento
 
 
 --
--- TOC entry 1893 (class 2606 OID 16630)
+-- TOC entry 1935 (class 2606 OID 16684)
+-- Name: tbl_tipo_documento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tbl_tipo_documento
+    ADD CONSTRAINT tbl_tipo_documento_pkey PRIMARY KEY (tip_id);
+
+
+--
+-- TOC entry 1921 (class 2606 OID 16630)
 -- Name: tbl_tramo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -851,7 +1148,16 @@ ALTER TABLE ONLY tbl_tramo
 
 
 --
--- TOC entry 2035 (class 0 OID 0)
+-- TOC entry 1931 (class 2606 OID 16668)
+-- Name: tbl_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tbl_usuario
+    ADD CONSTRAINT tbl_usuario_pkey PRIMARY KEY (usu_id);
+
+
+--
+-- TOC entry 2079 (class 0 OID 0)
 -- Dependencies: 6
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -862,7 +1168,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2020-07-19 14:57:55
+-- Completed on 2020-07-20 16:20:00
 
 --
 -- PostgreSQL database dump complete
