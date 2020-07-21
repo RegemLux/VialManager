@@ -28,6 +28,7 @@ create table tbl_caso (
 	tramo_id int not null,
 	usuario_id int not null,
 	estado_id int not null,
+	orden_id int not null,
 	primary key(cas_id)
 );
 
@@ -95,12 +96,16 @@ references tbl_tramo(tra_id);
 
 
 alter table tbl_caso 
-add FK_tbl_caso_tblusuario_usu_id
+add constraint FK_tbl_caso_tblusuario_usu_id
 foreign key (usuario_id) 
 references tbl_usuario(usu_id);
 
-
 alter table tbl_caso 
-add FK_tbl_caso_tblestado_est_id
+add constraint FK_tbl_caso_tblestado_est_id
 foreign key (estado_id) 
 references tbl_estado(est_id);
+
+alter table tbl_caso
+add constraint FK_tbl_caso_tblorden_mantenimiento_ord_id
+foreign key (orden_id)
+references tbl_orden_mantenimiento(ord_id);

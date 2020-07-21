@@ -28,7 +28,6 @@ create table tbl_orden_mantenimiento(
 	ord_fecha_vencimiento date not null,
 	usuario_id int not null,
 	estado_id int not null,
-	caso_id int not null,
     primary key(ord_id)
 );
 
@@ -70,7 +69,4 @@ add constraint FK_tbl_orden_mantenimiento_tblestado_est_id
 foreign key (estado_id)
 references tbl_estado(est_id);
 
-alter table tbl_orden_mantenimiento
-add constraint FK_tbl_orden_mantenimiento_tblcaso_cas_id
-foreign key (caso_id)
-references tbl_caso(cas_id);
+
