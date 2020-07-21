@@ -52,7 +52,7 @@ references tbl_elemento_complementario(Ele_id);
 alter table tbl_tramo
 add constraint FK_tbl_tramo_tbljerarquia_Vial_jer_id
 foreign key (Jerarquia_vial_id)
-references tbl_jeraraquia_vial(Jer_id);
+references tbl_jerarquia_vial(Jer_id);
 
 alter table tbl_tramo
 add constraint FK_tbl_tramo_tblEje_vial_eje_id
